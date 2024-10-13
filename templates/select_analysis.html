@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Analysis</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styleH.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnH/2K8z3Jz8Nh1/h5bO4XMd0fTVycgGRVRD8pRuh5Et/6/g3yg9bGvmZaKYF+ql2UEYlZRg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </head>
+
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="{{ url_for('home') }}" class="navbar-logo">MyApp</a>
+        <ul class="navbar-menu">
+          {% if session.get('role') == 'admin' %}
+          <li>
+            <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+          </li>
+          {% endif %}
+        </ul>
+        <div class="navbar-icons">
+          {% if username %}
+          <span>Welcome, {{ username }}</span>
+
+          <a href="{{ url_for('logout') }}" class="navbar-icon">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+          {% else %}
+          <a href="{{ url_for('login') }}" class="navbar-icon">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <div class="containerM">
+      <h2>Select Columns for Analysis</h2>
+      <form action="/analyze" method="post" onsubmit="return validateForm();">
+        <label>Select Columns:</label>
+        <div class="form-group">
+          <div>
+            {% for column in columns %}
+            <div class="checkbox-group">
+              <input
+                type="checkbox"
+                name="column_name"
+                value="{{ column }}"
+                id="{{ column }}"
+              />
+              <p for="{{ column }}">{{ column }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="analysis_type">Select Analysis:</label>
+          <select
+            name="analysis_type"
+            id="analysis_type"
+            class="form-control"
+            required
+          >
+            <option value="mean">Mean</option>
+            <option value="median">Median</option>
+            <option value="mode">Mode</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="graph_type">Select Graph Type:</label>
+          <select
+            name="graph_type"
+            id="graph_type"
+            class="form-control"
+            required
+          >
+            <option value="line">Line Graph</option>
+            <option value="bar">Bar Graph</option>
+            <option value="pie">Pie Chart</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit">Analyze</button>
+      </form>
+
+      <div>
+        {{ all_data|safe }}
+        <!-- แสดง DataFrame ในรูปแบบตาราง -->
+      </div>
+
+      <button class="back-button" onclick="window.location.href='/'">
+        Back
+      </button>
+    </div>
+  </body>
+</html>

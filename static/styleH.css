@@ -1,0 +1,282 @@
+/* Global Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f5f3f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+h3 {
+  margin-top: 30px; /* เพิ่มระยะห่างด้านบน */
+  margin-bottom: 15px; /* เพิ่มระยะห่างด้านล่าง (ถ้าจำเป็น) */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+  text-align: left;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  background-color: #934cf4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* เพิ่มระยะห่างด้านบน */
+  margin-bottom: 15px; /* เพิ่มระยะห่างด้านล่าง */
+}
+
+button:hover {
+  background-color: #7940c7;
+}
+
+p {
+  /* paragraph */
+  font-size: 14px;
+}
+
+a {
+  /* link */
+  color: #7940c7;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+/* Container Style */
+.containerM {
+  position: fixed; /* ตั้งค่าตำแหน่งให้ fix */
+  top: 100px; /* ระยะห่าง 100px จากขอบบน */
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);*/
+  text-align: center;
+  max-height: 80%;
+  height: auto; /* กำหนดความสูงของ container */
+  max-width: 80%;
+  width: auto;
+  overflow-y: auto; /* ให้ scroll เมื่อเนื้อหามากเกินไป */
+  overflow-x: auto;
+}
+
+/* Navbar Styles */
+.navbar {
+  background-color: #7940c7;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed; /* ทำให้ Navbar ติดอยู่ที่ด้านบน */
+  top: 0; /* ตำแหน่งแนวนอน */
+  left: 0; /* ตำแหน่งแนวนอน */
+  right: 0; /* ตำแหน่งแนวนอน */
+  z-index: 1000; /* ให้ Navbar อยู่เหนือส่วนอื่น */
+}
+.navbar-container {
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navbar-menu li a:hover {
+  color: #cebae9;
+  text-decoration: underline;
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.navbar-icons span {
+  color: white;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.navbar-icon {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar-icon:hover {
+  color: #cebae9;
+}
+
+.navbar-icon i {
+  margin-right: 5px;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-icons {
+    gap: 10px;
+  }
+}
+/* เอาจุดออกจาก list */
+.file-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* ระยะห่างระหว่างรายการ */
+.file-list li {
+  margin: 5px 0;
+}
+
+/* การตกแต่งลิงก์ */
+.file-list a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.file-list a:hover {
+  text-decoration: underline;
+}
+.back-button {
+  position: fixed; /* ทำให้ตำแหน่งของปุ่มติดอยู่ที่มุม */
+  top: 100px; /* ระยะห่างจากด้านล่าง */
+  left: 100px; /* ระยะห่างจากด้านขวา */
+  z-index: 1000; /* ให้ปุ่มอยู่เหนือองค์ประกอบอื่น ๆ */
+}
+.graph {
+  margin-top: 30px;
+}
+
+/* ตาราง */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 16px;
+  text-align: center;
+}
+th,
+td {
+  padding: 12px;
+  border: 1px solid #7940c7;
+  text-align: left;
+}
+
+/* checkbox option */
+.checkbox-group {
+  display: flex; /* จัด checkbox และ label ให้อยู่ในบรรทัดเดียวกัน */
+  align-items: center; /* จัดกลางในแนวตั้ง */
+  margin-bottom: 5px; /* ระยะห่างระหว่างแต่ละกลุ่ม */
+  padding-left: 20px;
+}
+
+input[type="checkbox"] {
+  margin-right: 15px; /* ลดระยะห่างระหว่าง checkbox และ label */
+}
+
+label {
+  margin-top: 3px; /* ปรับให้ชื่อคอลัมน์อยู่ในแนวเดียวกับ checkbox */
+  font-weight: bold;
+}
+
+.form-group {
+  display: flex; /* จัด label และ select ให้อยู่ในบรรทัดเดียวกัน */
+  align-items: center; /* จัดให้อยู่ตรงกลางในแนวตั้ง */
+  margin-bottom: 5px; /* เพิ่ม margin-bottom สำหรับระยะห่างระหว่างฟอร์มกลุ่ม */
+}
+
+.form-group label {
+  margin-right: 10px; /* ระยะห่างระหว่าง label และ select */
+}
+
+/* admin */
+.admin-page {
+  display: flex; /* ใช้ Flexbox */
+  flex-direction: column; /* จัดเรียงในแนวตั้ง */
+  align-items: center; /* จัดให้เนื้อหากลางแนวนอน */
+  justify-content: center; /* จัดให้เนื้อหากลางแนวตั้ง */
+}
+
+.admin-container {
+  position: relative;
+  margin: 20px 0;
+  margin-right: 10px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  text-align: center;
+  max-height: 80%;
+  height: auto; /* กำหนดความสูงของ container */
+  max-width: 100%;
+  width: auto;
+  overflow-y: auto; /* ให้ scroll เมื่อเนื้อหามากเกินไป */
+  overflow-x: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้กับ container */
+}
+.admin-logout {
+  position: absolute; /* ใช้ตำแหน่งแบบ absolute */
+  top: 10px; /* ระยะห่างจากด้านบน */
+  right: 10px; /* ระยะห่างจากด้านขวา */
+}

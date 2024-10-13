@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styleH.css') }}"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnH/2K8z3Jz8Nh1/h5bO4XMd0fTVycgGRVRD8pRuh5Et/6/g3yg9bGvmZaKYF+ql2UEYlZRg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Home</title>
+  </head>
+  <body>
+    <!-- Navbar Section -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <a href="{{ url_for('home') }}" class="navbar-logo">MyApp</a>
+        <ul class="navbar-menu">
+          {% if session.get('role') == 'admin' %}
+          <li>
+            <a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a>
+          </li>
+          {% endif %}
+        </ul>
+        <div class="navbar-icons">
+          {% if username %}
+          <span>Welcome, {{ username }}</span>
+
+          <a href="{{ url_for('logout') }}" class="navbar-icon">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+          {% else %}
+          <a href="{{ url_for('login') }}" class="navbar-icon">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="containerM">
+      <h2>Upload Excel File for Data Analysis</h2>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <input type="file" name="file" class="form-control" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+      </form>
+
+      <!-- แสดงรายการไฟล์ที่อยู่ในโฟลเดอร์ uploads/ -->
+      <h3>Previously Uploaded Files</h3>
+      <ul class="file-list">
+        {% if uploaded_files %} {% for file in uploaded_files %}
+        <li>
+          <a href="{{ url_for('use_uploaded_file', filename=file) }}"
+            >{{ file }}</a
+          >
+        </li>
+        {% endfor %} {% else %}
+        <li>No files found.</li>
+        {% endif %}
+      </ul>
+    </div>
+  </body>
+</html>
