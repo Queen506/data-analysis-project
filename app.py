@@ -18,7 +18,7 @@ app.config['UPLOAD_FOLDER'] = 'uploads/'
 # ตั้งค่าการเชื่อมต่อกับฐานข้อมูล
 db_config = {
     'user': 'root',
-    'password': 'queen2545',
+    'password': '', #ใส่รหัสของฐานข้อมูลตนเอง
     'host': 'localhost',
     'database': 'user_login'
 }
