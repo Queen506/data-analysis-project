@@ -9,6 +9,7 @@
 5. รันแอปพลิเคชันโดยใช้คำสั่ง python app.py
 
 //ฐานข้อมูล MySQL
+
 CREATE DATABASE user_db;
 USE user_db;
 
@@ -19,6 +20,7 @@ password VARCHAR(100) NOT NULL
 );
 
 //เพิ่ม upload_history
+
 CREATE TABLE upload_history (
 id INT AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(255),
@@ -27,9 +29,11 @@ upload_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 //เพิ่ม role
+
 ALTER TABLE users ADD COLUMN role ENUM('user', 'admin') DEFAULT 'user';
 
 //เพิ่ม admin
+
 USE user_login;
 SET SQL_SAFE_UPDATES = 0;
 UPDATE users
