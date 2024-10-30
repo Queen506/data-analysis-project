@@ -206,7 +206,7 @@ def analyze_data():
     result_df.to_csv(csv_file_path, index=False)
 
     # ส่งค่า column name กลับไปยัง result.html
-    return render_template('result.html', results=results, analysis_type=analysis_type, columns=selected_columns, username=session.get('username'), graph_json=graph_json, csv_file=f'{selected_column}_analysis_result.csv', image_file=f'{selected_column}_analysis_graph.png')
+    return render_template('result.html', results=results, analysis_type=analysis_type, columns=selected_columns, username=session.get('username'), graph_json=graph_json, csv_file=f'analysis_result.csv', image_file=f'analysis_graph.png')
 
 @app.route('/download/<filename>')
 def download_file(filename):
